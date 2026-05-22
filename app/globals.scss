@@ -3,6 +3,7 @@
 :root {
   --bg: #f3f0eb;
   --stone: #d8d2ca;
+  --rose-stone: #e8d8d2;
   --stone-light: #ebe7e1;
   --text: #1f1d1b;
   --muted: #6f6962;
@@ -272,20 +273,29 @@ h3 {
 }
 
 .membership-list {
-  background: var(--stone-light);
   border: 1px solid var(--border);
 }
 
 .membership-row {
+  background: var(--rose-stone);
+
+  & + & {
+    border-top: 1px solid var(--border);
+  }
+}
+
+.membership-row__trigger {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 24px;
   align-items: center;
   padding: clamp(24px, 4vw, 36px);
-
-  & + & {
-    border-top: 1px solid var(--border);
-  }
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
 
   p {
     margin: 6px 0 0;
@@ -296,6 +306,40 @@ h3 {
     font-size: 0.9rem;
     font-weight: 600;
     white-space: nowrap;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--text);
+    outline-offset: -8px;
+  }
+}
+
+.membership-row__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.membership-row__arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--text);
+  border-bottom: 1px solid var(--text);
+  transform: rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.membership-row__trigger[aria-expanded='true'] .membership-row__arrow {
+  transform: rotate(225deg) translate(-2px, -2px);
+}
+
+.membership-row__content {
+  max-width: 680px;
+  padding: 0 clamp(24px, 4vw, 36px) clamp(26px, 4vw, 38px);
+
+  p {
+    margin: 0;
+    color: var(--muted);
   }
 }
 
@@ -375,7 +419,7 @@ h3 {
   gap: clamp(34px, 8vw, 100px);
   margin: 0 auto clamp(44px, 7vw, 84px);
   padding: clamp(42px, 7vw, 78px);
-  background: var(--stone);
+  background: transparent;
   border: 1px solid var(--border);
 
   p:not(.section-kicker) {
@@ -387,6 +431,10 @@ h3 {
 .application-form {
   display: grid;
   gap: 18px;
+  align-self: start;
+  padding: clamp(24px, 4vw, 36px);
+  background: var(--rose-stone);
+  border: 1px solid var(--border);
 
   label {
     display: grid;
@@ -496,12 +544,18 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .membership-row {
+  .membership-row__trigger {
     grid-template-columns: 1fr;
+    gap: 18px;
 
     strong {
       white-space: normal;
     }
+  }
+
+  .membership-row__meta {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .space__copy,

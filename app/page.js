@@ -54,16 +54,22 @@ const content = {
           name: 'Exclusive Membership',
           detail: 'Neograničen broj treninga',
           price: 'Od 450€ / mesečno',
+          description:
+            'Za članice koje žele potpun kontinuitet, fleksibilnost i najviši nivo pristupa klubu. Uključuje neograničene treninge u mirnom ritmu, sa prostorom za dosledan napredak i dugoročnu disciplinu.',
         },
         {
           name: 'Elite Package',
           detail: '12 treninga mesečno',
           price: 'Od 320€ / mesečno',
+          description:
+            'Uravnotežena opcija za žene koje žele strukturisan mesečni ritam. Dvanaest pažljivo vođenih termina pružaju dovoljno frekvencije za tehnički napredak, snagu i stabilnu rutinu.',
         },
         {
           name: 'Personal Training',
           detail: 'Individualni treninzi',
           price: 'Od 60€ / trening',
+          description:
+            'Individualan rad za specifične ciljeve, početak treninga ili usavršavanje tehnike. Svaki termin se prilagođava trenutnom nivou, fokusu i tempu članice.',
         },
       ],
     },
@@ -145,16 +151,22 @@ const content = {
           name: 'Exclusive Membership',
           detail: 'Unlimited sessions',
           price: 'From 450€ / monthly',
+          description:
+            'For members who want full continuity, flexibility and the highest level of access to the club. Unlimited training supports steady progress, long-term discipline and a composed rhythm.',
         },
         {
           name: 'Elite Package',
           detail: '12 sessions per month',
           price: 'From 320€ / monthly',
+          description:
+            'A balanced option for women who want a structured monthly rhythm. Twelve guided sessions create the consistency needed for technique, strength and measured progression.',
         },
         {
           name: 'Personal Training',
           detail: '1-on-1 sessions',
           price: 'From 60€ / session',
+          description:
+            'Individual work for specific goals, training foundations or technical refinement. Each session is shaped around the member’s current level, focus and pace.',
         },
       ],
     },
@@ -189,6 +201,7 @@ const content = {
 
 export default function Home() {
   const [language, setLanguage] = useState('sr');
+  const [activeMembership, setActiveMembership] = useState(0);
   const copy = content[language];
   const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const visualImage = `url('${assetBasePath}/elan-visual-reference.jpg')`;
@@ -270,15 +283,38 @@ export default function Home() {
           <p>{copy.membership.note}</p>
         </div>
         <div className="membership-list">
-          {copy.membership.items.map((item) => (
-            <article className="membership-row" key={item.name}>
-              <div>
-                <h3>{item.name}</h3>
-                <p>{item.detail}</p>
-              </div>
-              <strong>{item.price}</strong>
+          {copy.membership.items.map((item, index) => {
+            const isOpen = activeMembership === index;
+            const panelId = `membership-panel-${index}`;
+
+            return (
+              <article className="membership-row" key={item.name}>
+                <button
+                  type="button"
+                  className="membership-row__trigger"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                  onClick={() => setActiveMembership(isOpen ? null : index)}
+                >
+                  <div>
+                    <h3>{item.name}</h3>
+                    <p>{item.detail}</p>
+                  </div>
+                  <span className="membership-row__meta">
+                    <strong>{item.price}</strong>
+                    <span className="membership-row__arrow" aria-hidden="true" />
+                  </span>
+                </button>
+                <div
+                  className="membership-row__content"
+                  id={panelId}
+                  hidden={!isOpen}
+                >
+                  <p>{item.description}</p>
+                </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
