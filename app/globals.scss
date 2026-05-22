@@ -24,6 +24,7 @@
   --accent: #9c7a43;
   --white: #fbfaf7;
   --max: 1160px;
+  --header-height: 82px;
   --heading-font: 'Optima Nova LT Pro', Optima, 'Optima Nova', 'Cormorant Garamond',
     Georgia, serif;
 }
@@ -122,7 +123,8 @@ textarea {
 }
 
 .hero {
-  min-height: 92vh;
+  min-height: calc(92vh - var(--header-height));
+  margin-top: var(--header-height);
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
   align-items: stretch;
@@ -518,6 +520,10 @@ h3 {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --header-height: 0px;
+  }
+
   .site-header {
     position: sticky;
     align-items: flex-start;
