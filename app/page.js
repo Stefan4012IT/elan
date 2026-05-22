@@ -104,6 +104,7 @@ const content = {
       name: 'Ime',
       email: 'Email',
       focus: 'Trening fokus',
+      cta: 'Prijavi se',
       submit: 'Zatraži informacije o članstvu',
     },
   },
@@ -208,6 +209,7 @@ const content = {
       name: 'Name',
       email: 'Email',
       focus: 'Training focus',
+      cta: 'Apply',
       submit: 'Request Membership Information',
     },
   },
@@ -220,9 +222,16 @@ export default function Home() {
   const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const visualImage = `url('${assetBasePath}/elan-visual-reference.jpg')`;
   const heroImage = `url('${assetBasePath}/images/hero_elan_img.png')`;
+  const membershipImage = `url('${assetBasePath}/images/membership_img.png')`;
 
   return (
-    <main style={{ '--elan-image': visualImage, '--hero-image': heroImage }}>
+    <main
+      style={{
+        '--elan-image': visualImage,
+        '--hero-image': heroImage,
+        '--membership-image': membershipImage,
+      }}
+    >
       <header className="site-header" aria-label={copy.nav.label}>
         <a className="brand-mark" href="#top" aria-label="ÉLAN home">
           ÉLAN
@@ -296,6 +305,10 @@ export default function Home() {
           <p className="section-kicker">{copy.membership.kicker}</p>
           <h2>{copy.membership.title}</h2>
           <p>{copy.membership.note}</p>
+          <a className="button button--dark" href="#apply">
+            {copy.application.cta}
+          </a>
+          <div className="membership__image" aria-hidden="true" />
         </div>
         <div className="membership-list">
           {copy.membership.items.map((item, index) => {

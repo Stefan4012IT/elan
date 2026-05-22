@@ -290,9 +290,24 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
-.membership__intro p:not(.section-kicker) {
-  margin-top: 20px;
-  color: var(--muted);
+.membership__intro {
+  p:not(.section-kicker) {
+    margin-top: 20px;
+    color: var(--muted);
+  }
+
+  .button {
+    margin-top: 28px;
+  }
+}
+
+.membership__image {
+  min-height: 280px;
+  margin-top: clamp(34px, 6vw, 64px);
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(rgba(31, 29, 27, 0.08), rgba(243, 240, 235, 0.08)),
+    var(--membership-image, url('/images/membership_img.png')) center / cover;
 }
 
 .membership-list {
