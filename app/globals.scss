@@ -3,6 +3,8 @@
 @font-face {
   font-family: 'Optima Nova LT Pro';
   src:
+    url('#{$asset-prefix}/fonts/optima-nova-lt-pro/OptimaNovaLTProLight.otf')
+      format('opentype'),
     local('Optima nova LT Pro Light'),
     local('OptimaNovaLTPro-Light'),
     local('Optima Nova LT Pro Light');

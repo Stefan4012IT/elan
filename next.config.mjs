@@ -11,6 +11,9 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: isGithubActions ? '/elan' : '',
   },
+  sassOptions: {
+    additionalData: `$asset-prefix: "${isGithubActions ? '/elan' : ''}";`,
+  },
 };
 
 export default nextConfig;
