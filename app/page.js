@@ -51,25 +51,32 @@ const content = {
       note: 'Članstvo je moguće isključivo putem prijave.',
       items: [
         {
-          name: 'Exclusive Membership',
-          detail: 'Neograničen broj treninga',
-          price: 'Od 450€ / mesečno',
+          name: 'Precision Session',
+          detail: '1 trening',
+          price: '3.000 RSD',
           description:
-            'Za članice koje žele potpun kontinuitet, fleksibilnost i najviši nivo pristupa klubu. Uključuje neograničene treninge u mirnom ritmu, sa prostorom za dosledan napredak i dugoročnu disciplinu.',
+            'Jedan individualno vođen termin za upoznavanje sa ÉLAN pristupom, proveru tehnike ili fokusiran rad na određenom cilju. Idealno za prvi susret sa prostorom i metodom rada.',
         },
         {
-          name: 'Elite Package',
-          detail: '12 treninga mesečno',
-          price: 'Od 320€ / mesečno',
+          name: 'Essential Rhythm',
+          detail: '8 treninga',
+          price: '20.000 RSD',
           description:
-            'Uravnotežena opcija za žene koje žele strukturisan mesečni ritam. Dvanaest pažljivo vođenih termina pružaju dovoljno frekvencije za tehnički napredak, snagu i stabilnu rutinu.',
+            'Osnovni mesečni ritam za žene koje žele dosledan, ali smiren ulazak u trening. Osam termina pružaju strukturu, tehničku sigurnost i dovoljno prostora za stabilan napredak.',
         },
         {
-          name: 'Personal Training',
-          detail: 'Individualni treninzi',
-          price: 'Od 60€ / trening',
+          name: 'Refined Progress',
+          detail: '10 treninga',
+          price: '22.000 RSD',
           description:
-            'Individualan rad za specifične ciljeve, početak treninga ili usavršavanje tehnike. Svaki termin se prilagođava trenutnom nivou, fokusu i tempu članice.',
+            'Uravnotežen paket za članice koje žele čvršći kontinuitet i vidljiviji napredak kroz mesec. Deset termina omogućavaju precizniji rad na snazi, tehnici i rutini.',
+        },
+        {
+          name: 'Signature Discipline',
+          detail: '12 treninga',
+          price: '24.000 RSD',
+          description:
+            'Najpotpuniji paket za žene koje žele ozbiljan ritam treninga i stalnu podršku. Dvanaest termina mesečno daju najbolju osnovu za disciplinu, progresiju i dugoročnu snagu.',
         },
       ],
     },
@@ -148,25 +155,32 @@ const content = {
       note: 'Membership by application only.',
       items: [
         {
-          name: 'Exclusive Membership',
-          detail: 'Unlimited sessions',
-          price: 'From 450€ / monthly',
+          name: 'Precision Session',
+          detail: '1 session',
+          price: '3,000 RSD',
           description:
-            'For members who want full continuity, flexibility and the highest level of access to the club. Unlimited training supports steady progress, long-term discipline and a composed rhythm.',
+            'A single guided session for discovering the ÉLAN method, refining technique or focusing on one specific objective. Ideal as a first encounter with the space and training approach.',
         },
         {
-          name: 'Elite Package',
-          detail: '12 sessions per month',
-          price: 'From 320€ / monthly',
+          name: 'Essential Rhythm',
+          detail: '8 sessions',
+          price: '20,000 RSD',
           description:
-            'A balanced option for women who want a structured monthly rhythm. Twelve guided sessions create the consistency needed for technique, strength and measured progression.',
+            'A calm monthly foundation for women who want consistency without excess. Eight sessions provide structure, technical confidence and enough frequency for steady progress.',
         },
         {
-          name: 'Personal Training',
-          detail: '1-on-1 sessions',
-          price: 'From 60€ / session',
+          name: 'Refined Progress',
+          detail: '10 sessions',
+          price: '22,000 RSD',
           description:
-            'Individual work for specific goals, training foundations or technical refinement. Each session is shaped around the member’s current level, focus and pace.',
+            'A balanced package for members who want stronger continuity and more visible monthly progression. Ten sessions support precise work on strength, technique and routine.',
+        },
+        {
+          name: 'Signature Discipline',
+          detail: '12 sessions',
+          price: '24,000 RSD',
+          description:
+            'The most complete rhythm for women who want serious training consistency and regular support. Twelve monthly sessions create the strongest base for discipline, progression and long-term strength.',
         },
       ],
     },
