@@ -133,7 +133,7 @@ textarea {
   min-height: 620px;
   background:
     linear-gradient(90deg, rgba(31, 29, 27, 0.1), rgba(243, 240, 235, 0.24)),
-    var(--elan-image, url('/elan-visual-reference.jpg')) center / cover;
+    var(--hero-image, url('/images/hero_elan_img.png')) center / cover;
   border-right: 1px solid var(--border);
 }
 
