@@ -335,7 +335,10 @@ h3 {
 
 .membership-row__content {
   max-width: 680px;
-  padding: 0 clamp(24px, 4vw, 36px) clamp(26px, 4vw, 38px);
+  padding: clamp(22px, 3vw, 30px) clamp(24px, 4vw, 36px)
+    clamp(26px, 4vw, 38px);
+  background: var(--stone-light);
+  border-top: 1px solid rgba(189, 181, 172, 0.62);
 
   p {
     margin: 0;
