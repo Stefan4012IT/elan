@@ -8,6 +8,9 @@ const nextConfig = {
   },
   basePath: isGithubActions ? '/elan' : '',
   assetPrefix: isGithubActions ? '/elan/' : '',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGithubActions ? '/elan' : '',
+  },
 };
 
 export default nextConfig;

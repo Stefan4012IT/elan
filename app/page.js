@@ -190,9 +190,11 @@ const content = {
 export default function Home() {
   const [language, setLanguage] = useState('sr');
   const copy = content[language];
+  const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  const visualImage = `url('${assetBasePath}/elan-visual-reference.jpg')`;
 
   return (
-    <main>
+    <main style={{ '--elan-image': visualImage }}>
       <header className="site-header" aria-label={copy.nav.label}>
         <a className="brand-mark" href="#top" aria-label="ÉLAN home">
           ÉLAN

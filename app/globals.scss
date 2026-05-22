@@ -116,7 +116,7 @@ textarea {
   min-height: 620px;
   background:
     linear-gradient(90deg, rgba(31, 29, 27, 0.1), rgba(243, 240, 235, 0.24)),
-    url('/elan-visual-reference.jpg') center / cover;
+    var(--elan-image, url('/elan-visual-reference.jpg')) center / cover;
   border-right: 1px solid var(--border);
 }
 
@@ -325,7 +325,7 @@ h3 {
   border: 1px solid rgba(251, 250, 247, 0.52);
   background:
     linear-gradient(rgba(31, 29, 27, 0.34), rgba(31, 29, 27, 0.34)),
-    url('/elan-visual-reference.jpg') center / cover;
+    var(--elan-image, url('/elan-visual-reference.jpg')) center / cover;
   text-align: center;
 
   span {
