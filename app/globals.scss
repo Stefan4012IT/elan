@@ -211,7 +211,7 @@ h2 {
   font-family: var(--heading-font);
   font-size: clamp(2.6rem, 5vw, 5rem);
   font-weight: 300;
-  line-height: 0.98;
+  line-height: 1.04;
 }
 
 h3 {
@@ -253,7 +253,6 @@ h3 {
   h2 {
     max-width: 760px;
     font-size: clamp(2.6rem, 4.6vw, 4.65rem);
-    line-height: 1.06;
   }
 
   p:not(.section-kicker) {
