@@ -52,6 +52,7 @@ a {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -114,12 +115,85 @@ textarea {
   }
 }
 
+.brand-lockup {
+  display: inline-flex;
+  align-items: baseline;
+  gap: clamp(12px, 1.8vw, 18px);
+  min-width: 0;
+}
+
 .brand-mark {
   font-family: var(--heading-font);
   font-weight: 300;
   font-size: clamp(1.55rem, 3vw, 2.3rem);
   letter-spacing: 0.26em;
   line-height: 1;
+}
+
+.brand-descriptor {
+  position: relative;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transform: translateY(1px);
+  opacity: 0;
+  animation: brandDescriptorIn 900ms ease 240ms forwards;
+  transition:
+    color 220ms ease,
+    transform 220ms ease;
+  white-space: nowrap;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: 1px;
+    background: rgba(156, 122, 67, 0.48);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 420ms ease;
+  }
+}
+
+.brand-lockup:hover .brand-descriptor,
+.brand-lockup:focus-visible .brand-descriptor {
+  color: var(--text);
+  transform: translateY(0);
+}
+
+.brand-lockup:hover .brand-descriptor::after,
+.brand-lockup:focus-visible .brand-descriptor::after {
+  transform: scaleX(1);
+}
+
+@keyframes brandDescriptorIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-descriptor {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+
+    &::after {
+      transition: none;
+    }
+  }
 }
 
 .hero {
@@ -287,26 +361,70 @@ h3 {
   display: grid;
   grid-template-columns: 0.72fr 1.28fr;
   gap: clamp(34px, 7vw, 92px);
+  align-items: start;
   border-top: 1px solid var(--border);
 }
 
 .membership__intro {
+  position: relative;
+  min-height: clamp(560px, 52vw, 700px);
+  padding: clamp(38px, 5vw, 58px) clamp(22px, 4vw, 40px);
+  overflow: visible;
+  color: var(--white);
+
+  > :not(.membership__image) {
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    color: var(--white);
+  }
+
+  .section-kicker {
+    color: #d5bc87;
+  }
+
   p:not(.section-kicker) {
     margin-top: 20px;
-    color: var(--muted);
+    color: rgba(251, 250, 247, 0.76);
   }
 
   .button {
     margin-top: 28px;
+    border-color: var(--white);
+    background: var(--white);
+    color: var(--text);
+  }
+}
+
+.membership-highlights {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(251, 250, 247, 0.32);
+
+  li {
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(251, 250, 247, 0.32);
+    color: rgba(251, 250, 247, 0.88);
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.45;
+    text-transform: uppercase;
   }
 }
 
 .membership__image {
-  min-height: 280px;
-  margin-top: clamp(34px, 6vw, 64px);
-  border: 1px solid var(--border);
+  position: absolute;
+  inset: 0;
+  left: calc(((100vw - min(var(--max), calc(100vw - 40px))) / 2) * -1);
+  z-index: 0;
+  border: 1px solid rgba(31, 29, 27, 0.34);
+  border-left: 0;
   background:
-    linear-gradient(rgba(31, 29, 27, 0.08), rgba(243, 240, 235, 0.08)),
+    linear-gradient(rgba(31, 29, 27, 0.66), rgba(31, 29, 27, 0.52)),
     var(--membership-image, url('/images/membership_img.png')) center / cover;
 }
 
@@ -315,7 +433,8 @@ h3 {
 }
 
 .membership-row {
-  background: var(--rose-stone);
+  background: transparent;
+  color: var(--text);
 
   & + & {
     border-top: 1px solid var(--border);
@@ -372,13 +491,14 @@ h3 {
 }
 
 .membership-row__content {
-  max-width: 680px;
   padding: clamp(22px, 3vw, 30px) clamp(24px, 4vw, 36px)
     clamp(26px, 4vw, 38px);
-  background: var(--stone-light);
+  background: rgba(251, 250, 247, 0.38);
   border-top: 1px solid rgba(189, 181, 172, 0.62);
+  color: var(--text);
 
   p {
+    max-width: 680px;
     margin: 0;
     color: var(--muted);
   }
@@ -403,17 +523,28 @@ h3 {
 }
 
 .space__panel {
+  position: relative;
+  overflow: hidden;
   min-height: 520px;
   display: grid;
   place-content: center;
   margin: clamp(28px, 5vw, 64px);
   border: 1px solid rgba(251, 250, 247, 0.52);
-  background:
-    linear-gradient(rgba(31, 29, 27, 0.34), rgba(31, 29, 27, 0.34)),
-    var(--elan-image, url('/elan-visual-reference.jpg')) center / cover;
   text-align: center;
 
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      linear-gradient(rgba(31, 29, 27, 0.44), rgba(31, 29, 27, 0.58)),
+      radial-gradient(circle at center, rgba(31, 29, 27, 0.08), rgba(31, 29, 27, 0.42));
+  }
+
   span {
+    position: relative;
+    z-index: 2;
     font-family: var(--heading-font);
     font-weight: 300;
     font-size: clamp(3.6rem, 7vw, 6.4rem);
@@ -421,11 +552,58 @@ h3 {
   }
 
   small {
+    position: relative;
+    z-index: 2;
     margin-top: 12px;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.17em;
     text-transform: uppercase;
+  }
+}
+
+.space-carousel {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.space-carousel__slide {
+  position: absolute;
+  inset: 0;
+  background: var(--slide-image) var(--slide-position, center) / cover;
+  opacity: 0;
+  transform: scale(1.035);
+  animation: spaceCarousel 30s infinite;
+  animation-delay: calc(var(--slide-index) * 6s);
+}
+
+@keyframes spaceCarousel {
+  0% {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+
+  8%,
+  20% {
+    opacity: 1;
+  }
+
+  28%,
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-carousel__slide {
+    animation: none;
+
+    &:first-child {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
 
@@ -475,7 +653,7 @@ h3 {
   gap: 18px;
   align-self: start;
   padding: clamp(24px, 4vw, 36px);
-  background: var(--rose-stone);
+  background: transparent;
   border: 1px solid var(--border);
 
   label {
@@ -489,23 +667,126 @@ h3 {
   }
 
   input,
+  select,
   textarea {
     width: 100%;
     border: 1px solid var(--border);
-    background: rgba(251, 250, 247, 0.52);
+    background: rgba(251, 250, 247, 0.34);
     color: var(--text);
     padding: 14px 15px;
     outline: none;
+
+    &:focus {
+      border-color: var(--text);
+      box-shadow: 0 0 0 1px rgba(31, 29, 27, 0.18);
+    }
   }
 
   textarea {
     resize: vertical;
   }
 
+  select {
+    appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--text) 50%),
+      linear-gradient(135deg, var(--text) 50%, transparent 50%);
+    background-position:
+      calc(100% - 18px) 50%,
+      calc(100% - 12px) 50%;
+    background-repeat: no-repeat;
+    background-size: 6px 6px;
+    padding-right: 42px;
+  }
+
   button {
     width: fit-content;
     margin-top: 8px;
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--white);
     cursor: pointer;
+
+    &:disabled {
+      cursor: wait;
+      opacity: 0.68;
+    }
+  }
+}
+
+.form-status {
+  min-height: 1.4em;
+  margin: -6px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.form-field--hidden {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.success-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.success-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 29, 27, 0.36);
+  backdrop-filter: blur(5px);
+}
+
+.success-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 500px);
+  padding: clamp(30px, 6vw, 48px);
+  border: 1px solid var(--border);
+  background: var(--stone-light);
+  box-shadow: 0 24px 70px rgba(31, 29, 27, 0.18);
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.35rem);
+  }
+
+  p:not(.section-kicker) {
+    margin: 16px 0 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+    padding: 13px 22px;
+    border: 1px solid var(--text);
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+
+    &:hover,
+    &:focus-visible {
+      background: transparent;
+      color: var(--text);
+    }
   }
 }
 
@@ -526,6 +807,12 @@ h3 {
 
   .feature-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .membership__image {
+    left: 0;
+    margin-left: 0;
+    border-left: 1px solid var(--border);
   }
 
   .section-heading {
@@ -562,9 +849,22 @@ h3 {
     min-height: 30px;
   }
 
+  .brand-lockup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
   .brand-mark {
     font-size: 1.45rem;
     letter-spacing: 0.16em;
+  }
+
+  .brand-descriptor {
+    max-width: 112px;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    white-space: normal;
   }
 
   .hero {

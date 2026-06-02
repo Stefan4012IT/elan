@@ -48,7 +48,12 @@ const content = {
     membership: {
       kicker: 'Članstvo',
       title: 'Opcije članstva',
-      note: 'Članstvo je moguće isključivo putem prijave.',
+      note: 'Svi treninzi su isključivo vođeni. Svaki termin ima jasnu strukturu, korekciju tehnike i tempo rada prilagođen članici.',
+      highlights: [
+        'Bez samostalnog korišćenja prostora',
+        'Fokus na tehniku, kontrolu i progresiju',
+        'Miran ritam rada u privatnom okruženju',
+      ],
       items: [
         {
           name: 'Precision Session',
@@ -103,9 +108,18 @@ const content = {
       text: 'Kako bi se očuvali kvalitet prostora i iskustvo treninga, ÉLAN prima članice kroz kratak proces prijave.',
       name: 'Ime',
       email: 'Email',
+      phone: 'Telefon',
       focus: 'Trening fokus',
+      focusPlaceholder: 'Nisam još odlučila',
       cta: 'Prijavi se',
       submit: 'Zatraži informacije o članstvu',
+      success: 'Prijava je poslata.',
+      successTitle: 'Prijava je primljena.',
+      successText:
+        'Hvala na interesovanju za ÉLAN. Javićemo se uskoro sa sledećim koracima.',
+      successClose: 'Zatvori',
+      error: 'Slanje trenutno nije uspelo.',
+      blocked: 'Slanje nije prihvaćeno.',
     },
   },
   en: {
@@ -153,7 +167,12 @@ const content = {
     membership: {
       kicker: 'Membership',
       title: 'Membership Options',
-      note: 'Membership by application only.',
+      note: 'All sessions are exclusively guided. Each appointment has a clear structure, technical correction and a pace adapted to the member.',
+      highlights: [
+        'No unsupervised use of the space',
+        'Focus on technique, control and progression',
+        'A calm training rhythm in a private setting',
+      ],
       items: [
         {
           name: 'Precision Session',
@@ -208,9 +227,18 @@ const content = {
       text: 'To preserve the quality of the space and the training experience, ÉLAN accepts members through a short application process.',
       name: 'Name',
       email: 'Email',
+      phone: 'Phone',
       focus: 'Training focus',
+      focusPlaceholder: 'I have not decided yet',
       cta: 'Apply',
       submit: 'Request Membership Information',
+      success: 'Your application has been sent.',
+      successTitle: 'Application received.',
+      successText:
+        'Thank you for your interest in ÉLAN. We will be in touch shortly with the next steps.',
+      successClose: 'Close',
+      error: 'Sending is currently unavailable.',
+      blocked: 'This submission was not accepted.',
     },
   },
 };
@@ -218,11 +246,73 @@ const content = {
 export default function Home() {
   const [language, setLanguage] = useState('sr');
   const [activeMembership, setActiveMembership] = useState(0);
+  const [submitState, setSubmitState] = useState('idle');
+  const [formStartedAt] = useState(() => new Date().toISOString());
   const copy = content[language];
+  const leadsWebAppUrl = process.env.NEXT_PUBLIC_LEADS_WEB_APP_URL;
   const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const visualImage = `url('${assetBasePath}/elan-visual-reference.jpg')`;
   const heroImage = `url('${assetBasePath}/images/hero_elan_img.png')`;
   const membershipImage = `url('${assetBasePath}/images/membership_img.png')`;
+  const spaceSlides = [
+    {
+      src: `${assetBasePath}/elan-visual-reference.jpg`,
+      position: 'center',
+    },
+    {
+      src: `${assetBasePath}/images/membership_img.png`,
+      position: 'center',
+    },
+    {
+      src: `${assetBasePath}/images/hero_elan_img.png`,
+      position: '42% center',
+    },
+    {
+      src: `${assetBasePath}/elan-visual-reference.jpg`,
+      position: 'center 34%',
+    },
+    {
+      src: `${assetBasePath}/images/membership_img.png`,
+      position: '58% center',
+    },
+  ];
+  const handleApplicationSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const honeypot = formData.get('website');
+    const startedAt = Date.parse(formData.get('formStartedAt'));
+    const elapsedMs = Date.now() - startedAt;
+
+    if (honeypot || Number.isNaN(startedAt) || elapsedMs < 2500) {
+      setSubmitState('blocked');
+      return;
+    }
+
+    if (!leadsWebAppUrl) {
+      setSubmitState('error');
+      return;
+    }
+
+    formData.set('userAgent', navigator.userAgent);
+    formData.set('ip', '');
+    setSubmitState('sending');
+
+    try {
+      await fetch(leadsWebAppUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams(formData),
+      });
+
+      form.reset();
+      setSubmitState('success');
+    } catch {
+      form.reset();
+      setSubmitState('success');
+    }
+  };
 
   return (
     <main
@@ -233,8 +323,9 @@ export default function Home() {
       }}
     >
       <header className="site-header" aria-label={copy.nav.label}>
-        <a className="brand-mark" href="#top" aria-label="ÉLAN home">
-          ÉLAN
+        <a className="brand-lockup" href="#top" aria-label="ÉLAN home">
+          <span className="brand-mark">ÉLAN</span>
+          <span className="brand-descriptor">Women’s Strength Club</span>
         </a>
         <div className="header-actions">
           <nav>
@@ -305,6 +396,11 @@ export default function Home() {
           <p className="section-kicker">{copy.membership.kicker}</p>
           <h2>{copy.membership.title}</h2>
           <p>{copy.membership.note}</p>
+          <ul className="membership-highlights">
+            {copy.membership.highlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
           <a className="button button--dark" href="#apply">
             {copy.application.cta}
           </a>
@@ -353,6 +449,19 @@ export default function Home() {
           <p>{copy.space.text}</p>
         </div>
         <div className="space__panel" aria-hidden="true">
+          <div className="space-carousel">
+            {spaceSlides.map((slide, index) => (
+              <div
+                className="space-carousel__slide"
+                key={`${slide.src}-${index}`}
+                style={{
+                  '--slide-image': `url('${slide.src}')`,
+                  '--slide-position': slide.position,
+                  '--slide-index': index,
+                }}
+              />
+            ))}
+          </div>
           <span>ÉLAN</span>
           <small>{copy.space.panel}</small>
         </div>
@@ -377,22 +486,98 @@ export default function Home() {
           <h2>{copy.application.title}</h2>
           <p>{copy.application.text}</p>
         </div>
-        <form className="application-form">
+        <form className="application-form" onSubmit={handleApplicationSubmit}>
+          <label className="form-field--hidden" aria-hidden="true">
+            Website
+            <input
+              type="text"
+              name="website"
+              tabIndex="-1"
+              autoComplete="off"
+            />
+          </label>
+          <input type="hidden" name="formStartedAt" value={formStartedAt} />
+          <input type="hidden" name="source" value="elan-membership-application" />
+          <input type="hidden" name="language" value={language} />
+          <input type="hidden" name="ip" value="" />
+          <input type="hidden" name="userAgent" value="" />
           <label>
             {copy.application.name}
-            <input type="text" name="name" autoComplete="name" />
+            <input
+              type="text"
+              name="name"
+              autoComplete="name"
+              minLength="2"
+              maxLength="80"
+              required
+            />
           </label>
           <label>
             {copy.application.email}
-            <input type="email" name="email" autoComplete="email" />
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              maxLength="120"
+              required
+            />
+          </label>
+          <label>
+            {copy.application.phone}
+            <input
+              type="tel"
+              name="phone"
+              autoComplete="tel"
+              inputMode="tel"
+              minLength="6"
+              maxLength="32"
+              required
+            />
           </label>
           <label>
             {copy.application.focus}
-            <textarea name="focus" rows="4" />
+            <select name="focus" defaultValue="Essential Rhythm" required>
+              <option value={copy.application.focusPlaceholder}>
+                {copy.application.focusPlaceholder}
+              </option>
+              {copy.membership.items.map((item) => (
+                <option key={item.name} value={item.name}>
+                  {item.name} - {item.detail}
+                </option>
+              ))}
+            </select>
           </label>
-          <button type="submit">{copy.application.submit}</button>
+          <button type="submit" disabled={submitState === 'sending'}>
+            {copy.application.submit}
+          </button>
+          <p className="form-status" role="status">
+            {submitState === 'error' && copy.application.error}
+            {submitState === 'blocked' && copy.application.blocked}
+          </p>
         </form>
       </section>
+      {submitState === 'success' && (
+        <div
+          className="success-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="success-modal-title"
+        >
+          <div
+            className="success-modal__backdrop"
+            onClick={() => setSubmitState('idle')}
+            aria-hidden="true"
+          />
+          <div className="success-modal__panel">
+            <p className="section-kicker">{copy.application.success}</p>
+            <h2 id="success-modal-title">{copy.application.successTitle}</h2>
+            <p>{copy.application.successText}</p>
+            <button type="button" onClick={() => setSubmitState('idle')}>
+              {copy.application.successClose}
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
