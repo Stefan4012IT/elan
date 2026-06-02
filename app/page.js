@@ -60,9 +60,9 @@ const content = {
         'Sve oko dolaska podržava osećaj privatnosti i lakoće',
       ],
       locality: [
-        'Dolazak ostaje jednostavan, bez rasipanja vremena pre termina',
-        'Dnevne obaveze ostaju diskretno nadohvat ruke',
-        'Lična nega i porodični ritam mogu da ostanu prirodno usklađeni',
+        'Do termina se dolazi lako, bez kruženja i traženja dodatnog vremena',
+        'Posle treninga možeš nastaviti dan bez vraćanja iz ritma',
+        'Kratke obaveze, nega i porodični planovi mogu stati oko istog izlaska',
       ],
     },
     membership: {
@@ -207,9 +207,9 @@ const content = {
         'Every detail around arrival supports privacy and ease',
       ],
       locality: [
-        'Arrival stays simple, without losing time before the session',
-        'Daily essentials remain quietly within reach',
-        'Personal care and family rhythm can stay naturally aligned',
+        'Arrival is simple, without circling or losing time before the session',
+        'After training, the rest of the day can continue without breaking rhythm',
+        'Small errands, personal care and family plans can fit around the same visit',
       ],
     },
     membership: {
