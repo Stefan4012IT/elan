@@ -59,6 +59,11 @@ const content = {
         'Promene rasporeda ostaju elegantne i nenametljive',
         'Sve oko dolaska podržava osećaj privatnosti i lakoće',
       ],
+      locality: [
+        'Dolazak ostaje jednostavan, bez rasipanja vremena pre termina',
+        'Dnevne obaveze ostaju diskretno nadohvat ruke',
+        'Lična nega i porodični ritam mogu da ostanu prirodno usklađeni',
+      ],
     },
     membership: {
       kicker: 'Private Membership',
@@ -200,6 +205,11 @@ const content = {
         'Appointments are selected with clarity and control',
         'Schedule changes remain quiet and effortless',
         'Every detail around arrival supports privacy and ease',
+      ],
+      locality: [
+        'Arrival stays simple, without losing time before the session',
+        'Daily essentials remain quietly within reach',
+        'Personal care and family rhythm can stay naturally aligned',
       ],
     },
     membership: {
@@ -486,6 +496,11 @@ export default function Home() {
           <span>{copy.ease.note}</span>
           <ul>
             {copy.ease.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <ul className="ease__locality">
+            {copy.ease.locality.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
