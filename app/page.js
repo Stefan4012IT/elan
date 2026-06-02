@@ -11,7 +11,7 @@ const content = {
       label: 'Glavna navigacija',
     },
     hero: {
-      eyebrow: 'Privatni klub snage za žene',
+      eyebrow: 'Exclusive Women’s Strength Club',
       title: 'Snaga, gracioznost, disciplina.',
       text: 'ÉLAN je privatni prostor za trening namenjen ženama koje žele da grade snagu u mirnom, fokusiranom i prefinjenom okruženju.',
       primary: 'Prijavi se za članstvo',
@@ -28,29 +28,44 @@ const content = {
       title: 'Drugačiji klub snage.',
       items: [
         {
+          eyebrow: 'Exclusive Access',
           title: 'Privatno okruženje',
           text: 'Miran prostor za žene, osmišljen bez gužve, pritiska i ometanja.',
         },
         {
+          eyebrow: 'Measured Results',
           title: 'Vođeni trening',
           text: 'Strukturisani treninzi usmereni na tehniku, progresiju i dugoročnu snagu.',
         },
         {
+          eyebrow: 'Limited Membership',
           title: 'Ograničeno članstvo',
           text: 'Broj članica je namerno ograničen kako bi se sačuvali kvalitet, privatnost i pažnja.',
         },
         {
+          eyebrow: 'Premium Standard',
           title: 'Prefinjeni standardi',
           text: 'Od prostora do pristupa treningu, svaki detalj je izgrađen oko fokusa i doslednosti.',
         },
       ],
     },
+    ease: {
+      kicker: 'Svakodnevni ritam',
+      title: 'Ovde ostatak dana može da sačeka.',
+      text: 'ÉLAN je osmišljen za žene koje ne žele da trening bude još jedna obaveza u nizu. Dolazak, termin i vreme oko treninga postaju deo mirnog, privatnog ritma u kome je pažnja vraćena onome što je zaista važno.',
+      note: 'Privatno okruženje, promišljena svakodnevica i sistem rezervacija koji poštuje tvoj tempo.',
+      items: [
+        'Termin se bira jasno i jednostavno',
+        'Promene rasporeda ostaju elegantne i nenametljive',
+        'Sve oko dolaska podržava osećaj privatnosti i lakoće',
+      ],
+    },
     membership: {
-      kicker: 'Članstvo',
+      kicker: 'Private Membership',
       title: 'Opcije članstva',
       note: 'Svi treninzi su isključivo vođeni. Svaki termin ima jasnu strukturu, korekciju tehnike i tempo rada prilagođen članici.',
       highlights: [
-        'Bez samostalnog korišćenja prostora',
+        'Svaki termin je vođen sa jasnom namerom',
         'Fokus na tehniku, kontrolu i progresiju',
         'Miran ritam rada u privatnom okruženju',
       ],
@@ -86,13 +101,13 @@ const content = {
       ],
     },
     space: {
-      kicker: 'Prostor',
+      kicker: 'The Private Space',
       title: 'Privatno. Fokusirano. Uzvišeno.',
       text: 'ÉLAN je osmišljen kao tiha alternativa tradicionalnoj teretani. Minimalan enterijer, kontrolisana atmosfera i ograničen broj članica stvaraju uslove za ozbiljan, dosledan rad.',
-      panel: 'Privatni klub snage za žene',
+      panel: 'Women’s Strength Private Club',
     },
     audience: {
-      kicker: 'Za koga',
+      kicker: 'For the Intentional',
       title: 'Za žene koje treniraju sa namerom.',
       text: 'ÉLAN je za žene koje žele snagu bez haosa, vođstvo bez pritiska i prostor u kome trening postaje deo smirenijeg, promišljenog načina života.',
       items: [
@@ -103,7 +118,7 @@ const content = {
       ],
     },
     application: {
-      kicker: 'Prijava',
+      kicker: 'By Application',
       title: 'Prijavi se za članstvo.',
       text: 'Kako bi se očuvali kvalitet prostora i iskustvo treninga, ÉLAN prima članice kroz kratak proces prijave.',
       name: 'Ime',
@@ -120,6 +135,14 @@ const content = {
       successClose: 'Zatvori',
       error: 'Slanje trenutno nije uspelo.',
       blocked: 'Slanje nije prihvaćeno.',
+    },
+    footer: {
+      line: 'Women’s Strength Private Club',
+      addressLabel: 'Adresa',
+      address: 'Privatni studio - adresa po prijavi',
+      phoneLabel: 'Telefon',
+      phone: 'Kontakt telefon',
+      socialLabel: 'Društvene mreže',
     },
   },
   en: {
@@ -147,29 +170,44 @@ const content = {
       title: 'A different kind of strength club.',
       items: [
         {
+          eyebrow: 'Exclusive Access',
           title: 'Private Environment',
           text: 'A calm, women-focused space designed without crowding, pressure or distraction.',
         },
         {
+          eyebrow: 'Measured Results',
           title: 'Guided Training',
           text: 'Structured sessions focused on technique, progression and long-term strength.',
         },
         {
+          eyebrow: 'Limited Membership',
           title: 'Limited Membership',
           text: 'Membership is intentionally limited to preserve quality, privacy and attention.',
         },
         {
+          eyebrow: 'Premium Standard',
           title: 'Refined Standards',
           text: 'From the space to the training approach, every detail is built around focus and consistency.',
         },
       ],
     },
+    ease: {
+      kicker: 'Considered Rhythm',
+      title: 'A place where the rest of the day can wait.',
+      text: 'ÉLAN is designed for women who do not want training to become another demand on an already full schedule. Arrival, booking and the time around each session are shaped as a calm private ritual, returning attention to what matters.',
+      note: 'A discreet setting, refined daily ease and a reservation system built around your rhythm.',
+      items: [
+        'Appointments are selected with clarity and control',
+        'Schedule changes remain quiet and effortless',
+        'Every detail around arrival supports privacy and ease',
+      ],
+    },
     membership: {
-      kicker: 'Membership',
+      kicker: 'Private Membership',
       title: 'Membership Options',
       note: 'All sessions are exclusively guided. Each appointment has a clear structure, technical correction and a pace adapted to the member.',
       highlights: [
-        'No unsupervised use of the space',
+        'Every session is guided with clear intention',
         'Focus on technique, control and progression',
         'A calm training rhythm in a private setting',
       ],
@@ -205,13 +243,13 @@ const content = {
       ],
     },
     space: {
-      kicker: 'The Space',
+      kicker: 'The Private Space',
       title: 'Private. Focused. Elevated.',
       text: 'ÉLAN is designed as a quiet alternative to the traditional gym. Minimal interiors, controlled atmosphere and a limited number of members create the conditions for serious, consistent work.',
       panel: 'Women’s Strength Private Club',
     },
     audience: {
-      kicker: 'For Whom',
+      kicker: 'For the Intentional',
       title: 'For women who train with intention.',
       text: 'ÉLAN is for women who want strength without chaos, guidance without pressure, and a space where training becomes part of a more composed lifestyle.',
       items: [
@@ -222,7 +260,7 @@ const content = {
       ],
     },
     application: {
-      kicker: 'Application',
+      kicker: 'By Application',
       title: 'Apply for membership.',
       text: 'To preserve the quality of the space and the training experience, ÉLAN accepts members through a short application process.',
       name: 'Name',
@@ -240,6 +278,14 @@ const content = {
       error: 'Sending is currently unavailable.',
       blocked: 'This submission was not accepted.',
     },
+    footer: {
+      line: 'Women’s Strength Private Club',
+      addressLabel: 'Address',
+      address: 'Private studio - address by application',
+      phoneLabel: 'Phone',
+      phone: 'Contact phone',
+      socialLabel: 'Social',
+    },
   },
 };
 
@@ -247,33 +293,43 @@ export default function Home() {
   const [language, setLanguage] = useState('sr');
   const [activeMembership, setActiveMembership] = useState(0);
   const [submitState, setSubmitState] = useState('idle');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStartedAt] = useState(() => new Date().toISOString());
   const copy = content[language];
   const leadsWebAppUrl = process.env.NEXT_PUBLIC_LEADS_WEB_APP_URL;
   const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const visualImage = `url('${assetBasePath}/elan-visual-reference.jpg')`;
-  const heroImage = `url('${assetBasePath}/images/hero_elan_img.png')`;
+  const heroImage = `url('${assetBasePath}/images/elan-hero-002.png')`;
   const membershipImage = `url('${assetBasePath}/images/membership_img.png')`;
+  const applicationImage = `url('${assetBasePath}/images/elan-prostor-6.png')`;
   const spaceSlides = [
     {
-      src: `${assetBasePath}/elan-visual-reference.jpg`,
+      src: `${assetBasePath}/images/elan-prostor-7.png`,
       position: 'center',
     },
     {
-      src: `${assetBasePath}/images/membership_img.png`,
+      src: `${assetBasePath}/images/elan-prostor-1.png`,
       position: 'center',
     },
     {
-      src: `${assetBasePath}/images/hero_elan_img.png`,
-      position: '42% center',
+      src: `${assetBasePath}/images/elan-prostor-2.png`,
+      position: 'center',
     },
     {
-      src: `${assetBasePath}/elan-visual-reference.jpg`,
-      position: 'center 34%',
+      src: `${assetBasePath}/images/elan-prostor-3.png`,
+      position: 'center',
     },
     {
-      src: `${assetBasePath}/images/membership_img.png`,
-      position: '58% center',
+      src: `${assetBasePath}/images/elan-prostor-4.png`,
+      position: 'center',
+    },
+    {
+      src: `${assetBasePath}/images/elan-prostor-5.png`,
+      position: 'center',
+    },
+    {
+      src: `${assetBasePath}/images/elan-prostor-6.png`,
+      position: 'center',
     },
   ];
   const handleApplicationSubmit = async (event) => {
@@ -320,6 +376,7 @@ export default function Home() {
         '--elan-image': visualImage,
         '--hero-image': heroImage,
         '--membership-image': membershipImage,
+        '--application-image': applicationImage,
       }}
     >
       <header className="site-header" aria-label={copy.nav.label}>
@@ -327,28 +384,56 @@ export default function Home() {
           <span className="brand-mark">ÉLAN</span>
           <span className="brand-descriptor">Women’s Strength Club</span>
         </a>
-        <div className="header-actions">
+        <div
+          className={`header-actions ${isMenuOpen ? 'is-open' : ''}`}
+          id="site-navigation"
+        >
           <nav>
-            <a href="#club">{copy.nav.club}</a>
-            <a href="#membership">{copy.nav.membership}</a>
-            <a href="#apply">{copy.nav.apply}</a>
+            <a href="#club" onClick={() => setIsMenuOpen(false)}>
+              {copy.nav.club}
+            </a>
+            <a href="#membership" onClick={() => setIsMenuOpen(false)}>
+              {copy.nav.membership}
+            </a>
+            <a href="#apply" onClick={() => setIsMenuOpen(false)}>
+              {copy.nav.apply}
+            </a>
           </nav>
+        </div>
+        <div className="header-controls">
           <div className="language-switch" aria-label="Language switcher">
             <button
               type="button"
               className={language === 'sr' ? 'is-active' : ''}
-              onClick={() => setLanguage('sr')}
+              onClick={() => {
+                setLanguage('sr');
+                setIsMenuOpen(false);
+              }}
             >
               SR
             </button>
             <button
               type="button"
               className={language === 'en' ? 'is-active' : ''}
-              onClick={() => setLanguage('en')}
+              onClick={() => {
+                setLanguage('en');
+                setIsMenuOpen(false);
+              }}
             >
               EN
             </button>
           </div>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-label={isMenuOpen ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={isMenuOpen}
+            aria-controls="site-navigation"
+            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
+          >
+            <span />
+            <span />
+          </button>
         </div>
       </header>
 
@@ -384,11 +469,28 @@ export default function Home() {
         <div className="feature-grid">
           {copy.difference.items.map((item) => (
             <article className="feature-card" key={item.title}>
+              <p className="feature-card__eyebrow">{item.eyebrow}</p>
               <h3>{item.title}</h3>
               <p>{item.text}</p>
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="ease section-shell">
+        <div className="ease__image ease__image--left" aria-hidden="true" />
+        <div className="ease__content">
+          <p className="section-kicker">{copy.ease.kicker}</p>
+          <h2>{copy.ease.title}</h2>
+          <p>{copy.ease.text}</p>
+          <span>{copy.ease.note}</span>
+          <ul>
+            {copy.ease.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="ease__image ease__image--right" aria-hidden="true" />
       </section>
 
       <section className="membership section-shell" id="membership">
@@ -556,6 +658,35 @@ export default function Home() {
           </p>
         </form>
       </section>
+
+      <footer className="site-footer">
+        <div className="site-footer__brand">
+          <span className="brand-mark">ÉLAN</span>
+          <p>{copy.footer.line}</p>
+        </div>
+        <div className="site-footer__details">
+          <div>
+            <p className="site-footer__label">{copy.footer.addressLabel}</p>
+            <p>{copy.footer.address}</p>
+          </div>
+          <div>
+            <p className="site-footer__label">{copy.footer.phoneLabel}</p>
+            <p>{copy.footer.phone}</p>
+          </div>
+          <div>
+            <p className="site-footer__label">{copy.footer.socialLabel}</p>
+            <div className="site-footer__socials">
+              <a href="#" aria-label="ÉLAN Facebook">
+                FB
+              </a>
+              <a href="#" aria-label="ÉLAN Instagram">
+                IG
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
       {submitState === 'success' && (
         <div
           className="success-modal"
