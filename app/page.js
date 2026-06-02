@@ -60,9 +60,18 @@ const content = {
         'Sve oko dolaska podržava osećaj privatnosti i lakoće',
       ],
       locality: [
-        'Do ÉLAN-a se dolazi lako: bez žurbe, kruženja i traženja mesta za parkiranje',
-        'Posle treninga dan se nastavlja mirno, jer je sve što treba nadohvat ruke',
-        'Kratke obaveze, nega i porodični planovi postaju deo istog promišljenog ritma',
+        {
+          eyebrow: 'Dolazak bez zastoja',
+          text: 'Do termina se dolazi lako, bez kruženja i traženja mesta za parkiranje',
+        },
+        {
+          eyebrow: 'Sve nadohvat ruke',
+          text: 'Posle treninga dan može da se nastavi mirno, bez dodatnog planiranja',
+        },
+        {
+          eyebrow: 'Deo istog rituala',
+          text: 'Kratke obaveze, nega i porodični planovi lakše se uklapaju u isti raspored',
+        },
       ],
     },
     membership: {
@@ -207,9 +216,18 @@ const content = {
         'Every detail around arrival supports privacy and ease',
       ],
       locality: [
-        'Arrival to ÉLAN is simple: no rushing, circling or searching for a place to park',
-        'After training, the day continues calmly, with what you need close at hand',
-        'Small errands, personal care and family plans become part of one considered rhythm',
+        {
+          eyebrow: 'Arrival without friction',
+          text: 'Arrival is simple, without circling or searching for a place to park',
+        },
+        {
+          eyebrow: 'Within easy reach',
+          text: 'After training, the rest of the day can continue calmly, without extra planning',
+        },
+        {
+          eyebrow: 'Part of one ritual',
+          text: 'Small errands, personal care and family plans fit more easily into one schedule',
+        },
       ],
     },
     membership: {
@@ -501,7 +519,10 @@ export default function Home() {
           </ul>
           <ul className="ease__locality">
             {copy.ease.locality.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item.text}>
+                <span>{item.eyebrow}</span>
+                {item.text}
+              </li>
             ))}
           </ul>
         </div>
