@@ -411,6 +411,11 @@ export default function Home() {
     spaceTouchStart.current = null;
     spaceTouchCurrent.current = null;
   };
+  const handleHomeClick = (event) => {
+    event.preventDefault();
+    setIsMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   const handleSpaceTouchEnd = () => {
     if (!spaceTouchStart.current || !spaceTouchCurrent.current) {
       return;
@@ -475,7 +480,12 @@ export default function Home() {
       }}
     >
       <header className="site-header" aria-label={copy.nav.label}>
-        <a className="brand-lockup" href="#top" aria-label="ÉLAN home">
+        <a
+          className="brand-lockup"
+          href="#top"
+          aria-label="ÉLAN home"
+          onClick={handleHomeClick}
+        >
           <span className="brand-mark">ÉLAN</span>
           <span className="brand-descriptor">Women’s Strength Club</span>
         </a>
