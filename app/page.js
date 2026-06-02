@@ -60,9 +60,9 @@ const content = {
         'Sve oko dolaska podržava osećaj privatnosti i lakoće',
       ],
       locality: [
-        'Do termina se dolazi lako, bez kruženja i traženja mesta za parkiranje',
-        'Posle treninga dan može da se nastavi mirno, bez dodatnog planiranja',
-        'Kratke obaveze, nega i porodični planovi lakše se uklapaju u isti raspored',
+        'Do ÉLAN-a se dolazi lako: bez žurbe, kruženja i traženja mesta za parkiranje',
+        'Posle treninga dan se nastavlja mirno, jer je sve što treba nadohvat ruke',
+        'Kratke obaveze, nega i porodični planovi postaju deo istog promišljenog ritma',
       ],
     },
     membership: {
@@ -207,9 +207,9 @@ const content = {
         'Every detail around arrival supports privacy and ease',
       ],
       locality: [
-        'Arrival is simple, without circling or searching for a place to park',
-        'After training, the rest of the day can continue calmly, without extra planning',
-        'Small errands, personal care and family plans fit more easily into one schedule',
+        'Arrival to ÉLAN is simple: no rushing, circling or searching for a place to park',
+        'After training, the day continues calmly, with what you need close at hand',
+        'Small errands, personal care and family plans become part of one considered rhythm',
       ],
     },
     membership: {
