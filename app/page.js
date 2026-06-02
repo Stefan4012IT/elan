@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const content = {
   sr: {
@@ -363,6 +363,13 @@ export default function Home() {
       position: 'center',
     },
   ];
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      shiftSpaceSlide(1);
+    }, 6000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
   const shiftSpaceSlide = (direction) => {
     setActiveSpaceSlide((current) => {
       const next = current + direction;
