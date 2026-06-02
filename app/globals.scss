@@ -1410,6 +1410,44 @@ h3 {
     padding: 40px 22px;
   }
 
+  .application {
+    width: 100%;
+    gap: 0;
+    margin-bottom: 42px;
+    padding: 0 0 42px;
+    border-inline: 0;
+    background: var(--stone-light);
+
+    &::before {
+      content: '';
+      display: block;
+      min-height: clamp(270px, 76vw, 390px);
+      background:
+        linear-gradient(180deg, rgba(31, 29, 27, 0.08), rgba(31, 29, 27, 0.18)),
+        var(--application-image, url('/images/elan-prostor-6.png')) center / cover;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  .application__copy {
+    width: calc(100% - 40px);
+    max-width: 560px;
+    margin: -42px auto 0;
+    padding: 28px 22px 22px;
+    background: rgba(243, 240, 235, 0.94);
+    border: 1px solid rgba(189, 181, 172, 0.72);
+    box-shadow: 0 22px 58px rgba(31, 29, 27, 0.12);
+    backdrop-filter: blur(14px);
+  }
+
+  .application-form {
+    width: calc(100% - 40px);
+    max-width: 560px;
+    margin: 18px auto 0;
+    padding: 24px 20px 26px;
+  }
+
   .site-footer__details {
     grid-template-columns: 1fr;
 
