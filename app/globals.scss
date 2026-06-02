@@ -513,7 +513,7 @@ h3 {
   left: calc((100vw - min(var(--max), calc(100vw - 40px))) / -2);
   background-image:
     linear-gradient(rgba(31, 29, 27, 0.03), rgba(31, 29, 27, 0.05)),
-    url('/images/elan-img-2.png');
+    url('#{$asset-prefix}/images/elan-img-2.png');
   background-position: right center;
 }
 
@@ -521,7 +521,7 @@ h3 {
   right: calc((100vw - min(var(--max), calc(100vw - 40px))) / -2);
   background-image:
     linear-gradient(rgba(243, 240, 235, 0.03), rgba(31, 29, 27, 0.05)),
-    url('/images/elan-img-3.png');
+    url('#{$asset-prefix}/images/elan-img-3.png');
   background-position: right center;
 }
 
