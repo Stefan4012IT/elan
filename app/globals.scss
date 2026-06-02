@@ -1358,6 +1358,11 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .section-heading {
+    display: block;
+    margin-bottom: 34px;
+  }
+
   .statement {
     padding-bottom: 44px;
   }
@@ -1375,6 +1380,16 @@ h3 {
   .ease__content {
     order: 2;
     padding: 30px 20px;
+  }
+
+  .ease__content ul,
+  .ease__content li {
+    text-align: left;
+  }
+
+  .ease__locality span {
+    margin-right: 0;
+    margin-left: 0;
   }
 
   .ease__image {
