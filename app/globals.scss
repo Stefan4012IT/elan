@@ -1462,9 +1462,25 @@ h3 {
   .space__panel {
     min-height: 360px;
     margin: 0 20px 36px;
+    touch-action: pan-y;
 
     span {
       letter-spacing: 0.16em;
+    }
+  }
+
+  .space-carousel__slide {
+    animation: none;
+    opacity: 0;
+    transform: translateX(calc(var(--slide-offset, 0) * 100%)) scale(1.015);
+    transition:
+      opacity 280ms ease,
+      transform 360ms ease;
+    will-change: opacity, transform;
+
+    &.is-active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
     }
   }
 }

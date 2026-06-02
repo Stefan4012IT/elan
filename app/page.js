@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const content = {
   sr: {
@@ -320,9 +320,12 @@ const content = {
 export default function Home() {
   const [language, setLanguage] = useState('sr');
   const [activeMembership, setActiveMembership] = useState(0);
+  const [activeSpaceSlide, setActiveSpaceSlide] = useState(0);
   const [submitState, setSubmitState] = useState('idle');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStartedAt] = useState(() => new Date().toISOString());
+  const spaceTouchStart = useRef(null);
+  const spaceTouchCurrent = useRef(null);
   const copy = content[language];
   const leadsWebAppUrl = process.env.NEXT_PUBLIC_LEADS_WEB_APP_URL;
   const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
@@ -360,6 +363,63 @@ export default function Home() {
       position: 'center',
     },
   ];
+  const shiftSpaceSlide = (direction) => {
+    setActiveSpaceSlide((current) => {
+      const next = current + direction;
+
+      if (next < 0) {
+        return spaceSlides.length - 1;
+      }
+
+      if (next >= spaceSlides.length) {
+        return 0;
+      }
+
+      return next;
+    });
+  };
+  const getSpaceSlideOffset = (index) => {
+    const rawOffset = index - activeSpaceSlide;
+
+    if (rawOffset === spaceSlides.length - 1) {
+      return -1;
+    }
+
+    if (rawOffset === -(spaceSlides.length - 1)) {
+      return 1;
+    }
+
+    return rawOffset;
+  };
+  const handleSpaceTouchStart = (event) => {
+    const touch = event.touches[0];
+    spaceTouchStart.current = { x: touch.clientX, y: touch.clientY };
+    spaceTouchCurrent.current = { x: touch.clientX, y: touch.clientY };
+  };
+  const handleSpaceTouchMove = (event) => {
+    const touch = event.touches[0];
+    spaceTouchCurrent.current = { x: touch.clientX, y: touch.clientY };
+  };
+  const resetSpaceTouch = () => {
+    spaceTouchStart.current = null;
+    spaceTouchCurrent.current = null;
+  };
+  const handleSpaceTouchEnd = () => {
+    if (!spaceTouchStart.current || !spaceTouchCurrent.current) {
+      return;
+    }
+
+    const deltaX = spaceTouchCurrent.current.x - spaceTouchStart.current.x;
+    const deltaY = spaceTouchCurrent.current.y - spaceTouchStart.current.y;
+    const isHorizontalSwipe =
+      Math.abs(deltaX) > 42 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25;
+
+    if (isHorizontalSwipe) {
+      shiftSpaceSlide(deltaX < 0 ? 1 : -1);
+    }
+
+    resetSpaceTouch();
+  };
   const handleApplicationSubmit = async (event) => {
     event.preventDefault();
 
@@ -586,19 +646,31 @@ export default function Home() {
           <h2>{copy.space.title}</h2>
           <p>{copy.space.text}</p>
         </div>
-        <div className="space__panel" aria-hidden="true">
+        <div
+          className="space__panel"
+          aria-label={copy.space.panel}
+          onTouchStart={handleSpaceTouchStart}
+          onTouchMove={handleSpaceTouchMove}
+          onTouchEnd={handleSpaceTouchEnd}
+          onTouchCancel={resetSpaceTouch}
+        >
           <div className="space-carousel">
-            {spaceSlides.map((slide, index) => (
-              <div
-                className="space-carousel__slide"
-                key={`${slide.src}-${index}`}
-                style={{
-                  '--slide-image': `url('${slide.src}')`,
-                  '--slide-position': slide.position,
-                  '--slide-index': index,
-                }}
-              />
-            ))}
+            {spaceSlides.map((slide, index) => {
+              const isActive = activeSpaceSlide === index;
+
+              return (
+                <div
+                  className={`space-carousel__slide ${isActive ? 'is-active' : ''}`}
+                  key={`${slide.src}-${index}`}
+                  style={{
+                    '--slide-image': `url('${slide.src}')`,
+                    '--slide-position': slide.position,
+                    '--slide-index': index,
+                    '--slide-offset': getSpaceSlideOffset(index),
+                  }}
+                />
+              );
+            })}
           </div>
           <span>ÉLAN</span>
           <small>{copy.space.panel}</small>
