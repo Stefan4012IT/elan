@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @font-face {
   font-family: 'Optima Nova LT Pro';
@@ -9,39 +9,6 @@
     local('OptimaNovaLTPro-Light'),
     local('Optima Nova LT Pro Light');
   font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica ELAN';
-  src:
-    url('#{$asset-prefix}/fonts/helvetica/Helvetica-Light.ttf') format('truetype'),
-    local('Helvetica Light'),
-    local('HelveticaNeue-Light');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica ELAN';
-  src:
-    url('#{$asset-prefix}/fonts/helvetica/Helvetica.ttf') format('truetype'),
-    local('Helvetica'),
-    local('Helvetica Neue');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica ELAN';
-  src:
-    url('#{$asset-prefix}/fonts/helvetica/Helvetica-Bold.ttf') format('truetype'),
-    local('Helvetica Bold'),
-    local('HelveticaNeue-Bold');
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -58,11 +25,8 @@
   --white: #fbfaf7;
   --max: 1160px;
   --header-height: 82px;
-  --heading-font-legacy: 'Optima Nova LT Pro', Optima, 'Optima Nova', 'Cormorant Garamond',
+  --heading-font: 'Optima Nova LT Pro', Optima, 'Optima Nova', 'Cormorant Garamond',
     Georgia, serif;
-  --body-font-legacy: 'Inter', system-ui, sans-serif;
-  --heading-font: 'Helvetica ELAN', Helvetica, Arial, var(--heading-font-legacy);
-  --body-font: 'Montserrat', var(--body-font-legacy);
 }
 
 * {
@@ -77,7 +41,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--body-font);
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
 }
 
