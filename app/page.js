@@ -567,7 +567,7 @@ export default function Home() {
       </section>
 
       <section className="difference section-shell">
-        <div className="section-heading">
+        <div className="section-heading section-heading--centered">
           <p className="section-kicker">{copy.difference.kicker}</p>
           <h2>{copy.difference.title}</h2>
         </div>
